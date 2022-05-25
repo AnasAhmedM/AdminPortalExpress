@@ -3,7 +3,7 @@ const router = express.Router();
 const FacemaskController = require("../controllers/Facemask")
 
 router.get('/', FacemaskController.All)
-router.delete('delete/:id', FacemaskController.DeleteOne)
+router.delete('/delete/:id', FacemaskController.DeleteOne)
 
 
 module.exports = router
