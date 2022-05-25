@@ -43,7 +43,6 @@ module.exports.NumberOfPeople = function (req, res, next) {
         let today = new Date()
         let day = today.getDay()
         NumPeople = NumPeople.splice(day+1).concat(NumPeople.splice(0,day+1))
-        NumPeople.unshift({'name': 'base','Total': 0})
         data.forEach(e=>{
             let min = new Date()
             min.setDate(min.getDate() - 7);
@@ -54,6 +53,7 @@ module.exports.NumberOfPeople = function (req, res, next) {
               return
               NumPeople[current.getDay()]['Total'] += e['crowd']
           })
+        NumPeople.unshift({'name': 'base','Total': 0})
         res.json(NumPeople)
     })
 }
@@ -94,7 +94,6 @@ module.exports.PeopleNoSocialDistance = function (req, res, next) {
         let today = new Date()
         let day = today.getDay()
         NumViolation = NumViolation.splice(day+1).concat(NumViolation.splice(0,day+1))
-        NumViolation.unshift({'name': 'base','Total': 0})
         data.forEach(e=>{
             let min = new Date()
             min.setDate(min.getDate() - 7);
@@ -105,6 +104,7 @@ module.exports.PeopleNoSocialDistance = function (req, res, next) {
               return
               NumViolation[current.getDay()]['Total'] += e['violation']
           })
+        NumViolation.unshift({'name': 'base','Total': 0})
         res.json(NumViolation)
     })
 }
