@@ -224,9 +224,20 @@ module.exports.PeopleNoSocialDistanceLastWeek = function (req, res, next) {
 }
 
 module.exports.DeleteOne = function (req, res, next) {
-    SocialDistance.findByIdAndDelete(req.params.id)
+  SocialDistance.findByIdAndDelete(req.params.id)
         .exec((err, data) => {
             if (err) throw err
             res.json({'message':'Sucess'})
         })
+}
+
+module.exports.Clean = function (req, res, next) {
+  let date = new Date()
+  date.setDate(date.getDate()-14)
+  let time = Math.floor(date.getTime() / 1000)
+  SocialDistance.deleteMany({ timestamp: { $lt: time } })
+      .exec((err, data) => {
+          if (err) throw err
+          res.json(data)
+      })
 }

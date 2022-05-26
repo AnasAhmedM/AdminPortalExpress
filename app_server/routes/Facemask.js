@@ -6,6 +6,7 @@ router.get('/', FacemaskController.All)
 router.get('/noMask', FacemaskController.PeopleWithoutMask)
 router.get('/noMaskLastWeek', FacemaskController.PeopleWithoutMaskLastWeek)
 router.delete('/delete/:id', FacemaskController.DeleteOne)
+router.get('/clean', FacemaskController.Clean)
 
 
 module.exports = router

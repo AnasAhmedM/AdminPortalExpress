@@ -8,5 +8,6 @@ router.get('/numViolation', SocialDistanceController.PeopleNoSocialDistance)
 router.get('/numPeopleLastWeek', SocialDistanceController.NumberOfPeopleLastWeek)
 router.get('/numViolationLastWeek', SocialDistanceController.PeopleNoSocialDistanceLastWeek)
 router.delete('/delete/:id', SocialDistanceController.DeleteOne)
+router.get('/clean', SocialDistanceController.Clean)
 
 module.exports = router
