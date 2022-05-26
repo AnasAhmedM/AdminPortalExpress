@@ -55,7 +55,7 @@ module.exports.PeopleWithoutMask = function (req, res, next) {
         let today = new Date()
         let day = today.getDay()
         NoMask = NoMask.splice(day+1).concat(NoMask.splice(0,day+1))
-        NoMask.unshift({'name': 'base','Total': 0})
+        NoMask.unshift({'name': 'Avg','Total': parseInt(total/7)})
         res.json({'data': NoMask, 'total': total})
     })
 }
@@ -109,7 +109,7 @@ module.exports.PeopleWithoutMaskLastWeek = function (req, res, next) {
       let today = new Date()
       let day = today.getDay()
       NoMask = NoMask.splice(day+1).concat(NoMask.splice(0,day+1))
-      NoMask.unshift({'name': 'base','Total': 0})
+      NoMask.unshift({'name': 'Avg','Total': parseInt(total/7)})
       res.json({'data': NoMask, 'total': total})
   })
 }

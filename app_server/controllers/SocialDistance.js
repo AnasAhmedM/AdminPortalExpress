@@ -56,7 +56,7 @@ module.exports.NumberOfPeople = function (req, res, next) {
         let today = new Date()
         let day = today.getDay()
         NumPeople = NumPeople.splice(day+1).concat(NumPeople.splice(0,day+1))
-        NumPeople.unshift({'name': 'base','Total': 0})
+        NumPeople.unshift({'name': 'Avg','Total': parseInt(total/7)})
         res.json({'data': NumPeople, 'total': total})
     })
 }
@@ -109,7 +109,7 @@ module.exports.PeopleNoSocialDistance = function (req, res, next) {
         let today = new Date()
         let day = today.getDay()
         NumViolation = NumViolation.splice(day+1).concat(NumViolation.splice(0,day+1))
-        NumViolation.unshift({'name': 'base','Total': 0})
+        NumViolation.unshift({'name': 'Avg','Total': parseInt(total/7)})
         res.json({'data': NumViolation, 'total': total})
     })
 }
@@ -164,7 +164,7 @@ module.exports.NumberOfPeopleLastWeek = function (req, res, next) {
       let today = new Date()
       let day = today.getDay()
       NumPeople = NumPeople.splice(day+1).concat(NumPeople.splice(0,day+1))
-      NumPeople.unshift({'name': 'base','Total': 0})
+      NumPeople.unshift({'name': 'Avg','Total': parseInt(total/7)})
       res.json({'data': NumPeople, 'total': total})
   })
 }
@@ -218,7 +218,7 @@ module.exports.PeopleNoSocialDistanceLastWeek = function (req, res, next) {
       let today = new Date()
       let day = today.getDay()
       NumViolation = NumViolation.splice(day+1).concat(NumViolation.splice(0,day+1))
-      NumViolation.unshift({'name': 'base','Total': 0})
+      NumViolation.unshift({'name': 'Avg','Total': parseInt(total/7)})
       res.json({'data': NumViolation, 'total': total})
   })
 }
