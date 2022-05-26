@@ -5,6 +5,8 @@ const SocialDistanceController = require("../controllers/SocialDistance")
 router.get('/', SocialDistanceController.All)
 router.get('/numPeople', SocialDistanceController.NumberOfPeople)
 router.get('/numViolation', SocialDistanceController.PeopleNoSocialDistance)
+router.get('/numPeopleLastWeek', SocialDistanceController.NumberOfPeople)
+router.get('/numViolationLastWeek', SocialDistanceController.PeopleNoSocialDistance)
 router.delete('/delete/:id', SocialDistanceController.DeleteOne)
 
 module.exports = router
