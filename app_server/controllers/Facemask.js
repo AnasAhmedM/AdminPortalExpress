@@ -40,9 +40,7 @@ module.exports.PeopleWithoutMask = function (req, res, next) {
               "Total": 0,
             },
           ]
-        let today = new Date()
-        let day = today.getDay()
-        NoMask = NoMask.splice(day+1).concat(NoMask.splice(0,day+1))
+        let total = 0
         data.forEach(e=>{
             let min = new Date()
             min.setDate(min.getDate() - 7);
@@ -52,9 +50,13 @@ module.exports.PeopleWithoutMask = function (req, res, next) {
             if(current<min || current> max)
               return
               NoMask[current.getDay()]['Total'] += e['masked']
+              total += e['masked']
           })
+        let today = new Date()
+        let day = today.getDay()
+        NoMask = NoMask.splice(day+1).concat(NoMask.splice(0,day+1))
         NoMask.unshift({'name': 'base','Total': 0})
-        res.json(NoMask)
+        res.json({'data': NoMask, 'total': total})
     })
 }
 
